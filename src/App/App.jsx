@@ -1,8 +1,9 @@
 import React from "react";
-// import { FeedbackOptions } from "../FeedbackOptions/FeedbackOptions";
-// import { Statistics } from "../Statistics/Statistics.jsx";
-// import { Section } from "../Section/Section.jsx";
-// import { Notification } from "../Notification/Notification.jsx";
+import Notiflix from "notiflix";
+import { nanoid } from "nanoid";
+import { ContactForm } from "../ContactForm/ContactForm";
+import { ContactList } from "../ContactList/ContactList";
+import { Filter } from "../Filter/Filter";
 import { Container, TopTitle, Title } from "./App.stiled.jsx";
 
 export class App extends React.Component {
@@ -16,28 +17,58 @@ export class App extends React.Component {
     filter: "",
   };
 
-  buttonClick = (evt) => {
-    const { name, value } = evt.currentTarget;
-    this.setState({ [name]: value });
+  formChange = (e) => {
+    // const { name, value } = e.target;
+    this.setState({ [e.target.name]: e.target.value });
+  }; // метод formChange класу App
+
+  deleteContact = (id) => {
+    this.setState((prevState) => ({
+      contacts: prevState.contacts.filter((contact) => contact.id !== id),
+    }));
+  }; // метод onDeleteContact класу App видаляє відфільтрований по id контакт з масиву контактів та новий масив контактів записується у state/сontacts
+
+  addContact = (contact) => {
+    const { contacts } = this.state;
+    if (
+      contacts.find(
+        (item) => item.name === contact.name && item.number === contact.number
+      )
+    ) {
+      return Notiflix.Notify.warning(
+        `${contact.name}: ${contact.number} is already in contacts`
+      );
+    }
+    this.setState((prevState) => {
+      const newContact = {
+        id: nanoid(),
+        ...contact,
+      };
+      return {
+        contacts: [...prevState.contacts, newContact],
+      };
+    });
   };
 
-  // countTotalFeedback = () => {
-  //   const { good, neutral, bad } = this.state;
-  //   return good + neutral + bad;
-  // };
-
-  // countPositiveFeedbackPercentage = () => {
-  //   const { good } = this.state;
-  //   const countTotal = this.countTotalFeedback();
-  //   return Math.round((good * 100) / countTotal);
-  // };
+  filterContacts = () =>
+    this.state.filter === ""
+      ? this.state.contacts
+      : this.state.contacts.filter((contact) =>
+          contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+        );
 
   render() {
+    const filteredContacts = this.filterContacts();
     return (
       <Container>
         <TopTitle>Phonebook</TopTitle>
-        
+        <ContactForm onSubmit={this.addContact} />
         <Title>Contacts</Title>
+        <Filter filter={this.state.filter} changeFormData={this.formChange} />
+        <ContactList
+          apdatedContacts={filteredContacts}
+          deleteContact={this.deleteContact}
+        />
       </Container>
     );
   }

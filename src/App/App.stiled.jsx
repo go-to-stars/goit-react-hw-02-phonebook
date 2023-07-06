@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   font-size: calc(10px + 2vmin);
 
   max-width: 60vw;
@@ -30,7 +31,24 @@ export const Container = styled.div`
   }
 `;
 
-export const TopTitle = styled.h1``;
+export const TopTitle = styled.h1`
+  margin: 0 auto 20px;
 
-export const Title = styled.h2``;
+  @media (max-width: 1023.98px) {
+    margin: 0 auto 15px;
+  }
+  @media (max-width: 767.98px) {
+    margin: 0 auto 10px;
+  }
+`;
 
+export const Title = styled.h2`
+  margin: 15px auto;
+
+  @media (max-width: 1023.98px) {
+    margin: 10px auto;
+  }
+  @media (max-width: 767.98px) {
+    margin: 5px auto;
+  }
+`;
