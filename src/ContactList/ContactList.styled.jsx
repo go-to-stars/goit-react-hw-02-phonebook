@@ -42,7 +42,7 @@ export const Text = styled.p`
   background-color: transparent;
 
   @media (max-width: 1023.98px) {
-    width: 20px;
+    width: 210px;
     height: 24px;
 
     font-size: 14px;
