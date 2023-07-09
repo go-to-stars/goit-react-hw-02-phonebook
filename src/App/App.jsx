@@ -32,12 +32,16 @@ export class App extends React.Component {
     const { contacts } = this.state;
     if (
       contacts.find(
-        (item) => item.name === contact.name && item.number === contact.number
+        (item) => item.name.toLowerCase() === contact.name.toLowerCase()
       )
     ) {
       return Notiflix.Notify.warning(
-        `${contact.name}: ${contact.number} is already in contacts`
-      ); // якщо в списку контактів існує контакт з таким ім'ям та номером телефону, вийти та вивести відповідне повідомлення
+        `Name ${contact.name} is already in contacts`
+      ); // якщо в списку контактів існує контакт з таким ім'ям, вийти та вивести відповідне повідомлення
+    } else if (contacts.find((item) => item.number === contact.number)) {
+      return Notiflix.Notify.warning(
+        `Number ${contact.number} is already in contacts`
+      ); // якщо в списку контактів існує контакт з таким номером телефону, вийти та вивести відповідне повідомлення
     }
     this.setState((prevState) => {
       const newContact = {
