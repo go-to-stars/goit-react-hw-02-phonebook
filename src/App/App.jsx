@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { ContactForm } from "../ContactForm/ContactForm";
 import { ContactList } from "../ContactList/ContactList";
 import { Filter } from "../Filter/Filter";
-import { Container, TopTitle, Title } from "./App.stiled.jsx";
+import { Container, Box, TopTitle, Title } from "./App.stiled.jsx"; // імпорт стилів тегів div (Container), div (Box), h1 (TopTitle), h2 (Title)
 
 export class App extends React.Component {
   state = {
@@ -15,7 +15,7 @@ export class App extends React.Component {
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ],
     filter: "",
-  };
+  }; // об'єкт-стану state класу App з даними що відображаються в інтерфейсі
 
   formChange = (e) => {
     const { name, value } = e.target; // деструктуризуєм name та value з посилання на об'єкт, що був ініціатором цієї події
@@ -37,7 +37,7 @@ export class App extends React.Component {
     ) {
       return Notiflix.Notify.warning(
         `${contact.name}: ${contact.number} is already in contacts`
-      );
+      ); // якщо в списку контактів існує контакт з таким ім'ям та номером телефону, вийти та вивести відповідне повідомлення
     }
     this.setState((prevState) => {
       const newContact = {
@@ -47,29 +47,34 @@ export class App extends React.Component {
       return {
         contacts: [...prevState.contacts, newContact],
       };
-    });
-  };
+    }); // інакше, створити константу newContact з id та розпиленим масивом контактів, та додати цей новий контакт до списку контактів
+  }; // метод addContact класу App додає контакт в масив контактів та новий масив контактів записується у state/сontacts
 
   filterContacts = () =>
     this.state.filter === ""
       ? this.state.contacts
       : this.state.contacts.filter((contact) =>
           contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
-        );
+        ); // метод filterContacts класу App. якщо поле фільтра порожнє, повертає повний список контактів, інакше повертає відфільтровний список контактів
 
   render() {
     const filteredContacts = this.filterContacts();
     return (
       <Container>
-        <TopTitle>Phonebook</TopTitle>
-        <ContactForm onSubmit={this.addContact} />
-        <Title>Contacts</Title>
-        <Filter filter={this.state.filter} changedFormData={this.formChange} />
-        <ContactList
-          apdatedContacts={filteredContacts}
-          deleteContact={this.deleteContact}
-        />
+        <Box>
+          <TopTitle>Phonebook</TopTitle>
+          <ContactForm onSubmit={this.addContact} />
+          <Title>Contacts</Title>
+          <Filter
+            filter={this.state.filter}
+            changedFormData={this.formChange}
+          />
+          <ContactList
+            apdatedContacts={filteredContacts}
+            deleteContact={this.deleteContact}
+          />
+        </Box>
       </Container>
     );
-  }
-} // функція  App(), повертає компоненти з даними для рендеру сторінки
+  } // повернення для рендеру розмітки застосунку "Книга контактів"
+} // клас App(), повертає компоненти з даними для рендеру сторінки

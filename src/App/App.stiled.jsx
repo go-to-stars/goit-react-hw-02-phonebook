@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: calc(10px + 2vmin);
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // font-size: calc(10px + 2vmin);
 
   max-width: 60vw;
   margin: 20px auto 0;
@@ -25,6 +25,38 @@ export const Container = styled.div`
   @media (max-width: 767.98px) {
     max-width: 80vw;
     margin: 10px auto 0;
+    padding: 5px;
+
+    border-radius: 6px;
+  }
+`;
+
+export const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+
+  max-width: 56vw;
+  margin: 20px auto;
+  padding: 15px;
+
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.6);
+
+  @media (max-width: 1023.98px) {
+    max-width: 64vw;
+    margin: 15px auto;
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
+  @media (max-width: 767.98px) {
+    max-width: 72vw;
+    margin: 10px auto;
     padding: 5px;
 
     border-radius: 6px;

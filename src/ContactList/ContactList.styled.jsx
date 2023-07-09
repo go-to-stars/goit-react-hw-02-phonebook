@@ -28,7 +28,7 @@ export const ListItem = styled.li`
   }
 
   @media (max-width: 767.98px) {
-    gap: 10px;
+    gap: 5px;
   }
 `;
 
@@ -49,7 +49,7 @@ export const Text = styled.p`
   }
 
   @media (max-width: 767.98px) {
-    width: 190px;
+    width: 176px;
     height: 20px;
 
     font-size: 10px;
@@ -57,7 +57,6 @@ export const Text = styled.p`
 `;
 
 export const Button = styled.button`
-  width: 100px;
   height: 28px;
 
   font-size: 18px;
@@ -72,7 +71,6 @@ export const Button = styled.button`
   }
 
   @media (max-width: 1023.98px) {
-    width: 72px;
     height: 24px;
 
     font-size: 14px;
@@ -81,7 +79,6 @@ export const Button = styled.button`
   }
 
   @media (max-width: 767.98px) {
-    width: 52px;
     height: 20px;
 
     font-size: 10px;

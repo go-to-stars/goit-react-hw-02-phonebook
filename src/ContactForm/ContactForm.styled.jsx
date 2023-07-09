@@ -21,7 +21,7 @@ export const Form = styled.form`
 
   @media (max-width: 767.98px) {
     gap: 8px;
-    width: 240px;
+    width: 220px;
     padding: 4px;
 
     border-radius: 6px;
@@ -80,7 +80,7 @@ export const Input = styled.input`
   }
 
   @media (max-width: 767.98px) {
-    width: 220px;
+    width: 200px;
     height: 16px;
     padding-left: 8px;
 
@@ -89,7 +89,6 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  width: 200px;
   height: 28px;
 
   font-size: 18px;
@@ -104,7 +103,6 @@ export const Button = styled.button`
   }
 
   @media (max-width: 1023.98px) {
-    width: 160px;
     height: 24px;
 
     font-size: 14px;
@@ -113,7 +111,6 @@ export const Button = styled.button`
   }
 
   @media (max-width: 767.98px) {
-    width: 120px;
     height: 20px;
 
     font-size: 10px;

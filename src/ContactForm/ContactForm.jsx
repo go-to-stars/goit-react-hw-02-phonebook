@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types"; // імпорт PropTypes для документування призначених типів властивостей, що передаються компонентам
-import { Form, Label, Input, Button } from "./ContactForm.styled"; // імпорт стилів тегів Form, Label, Input, Button
+import { Form, Label, Input, Button } from "./ContactForm.styled"; // імпорт стилів тегів form (Form), label (Label), input (Input), button (Button)
 
 export class ContactForm extends React.Component {
   state = {
